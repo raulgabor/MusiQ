@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+html {
+  height: 100%;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(.40turn, #191414 50%, #09414d, #1db954) no-repeat fixed;
+  color: #dcd9cd;
+  overflow: hidden;
+}

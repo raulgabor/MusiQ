@@ -1,0 +1,61 @@
+<div id="spinner" *ngIf="isLoading">
+<div class="lds-ellipsis">
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+</div>
+<div id="loading-text" *ngIf="isLoading">
+  <p>Wait a minute, while we analyze your musical taste...</p>
+</div>
+<div id="dashboard-page" *ngIf="!isLoading">
+  <div id="first-text" class="container">
+    <div class="row">
+      <div class="col">
+        <p id="text1">Hmm... Interesting</p>
+        <p id="text2">Oh, this is nice!</p>
+        <p id="text3">OK! I think I got it!</p>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <button id="btnClick" class="btn btn-lg btn-success" *ngIf="oauthResponse" (click)="getTopSongs();getProfile();findArtistsAndMovies();giveRandomMovie()">Click to find out</button>
+  </div>
+  <div class="container" id="top-songs" *ngIf="topSongArtistS">
+    <p id="top3-text">Look at this, {{this.account}}! Your top 3 songs are...</p>
+    <div class="container" id="songS">
+      <img id="songSCover" src="{{topSongCoverS}}">
+      <p id="songSArtist">{{topSongArtistS}}</p>
+      <p id="songSName">{{topSongNameS}}</p>
+    </div>
+    <div class="container" id="songM">
+      <img id="songMCover" src="{{topSongCoverM}}">
+      <p id="songMArtist">{{topSongArtistM}}</p>
+      <p id="songMName">{{topSongNameM}}</p>
+    </div>
+    <div class="container" id="songL">
+      <img id="songLCover" src="{{topSongCoverL}}">
+      <p id="songLArtist">{{topSongArtistL}}</p>
+      <p id="songLName">{{topSongNameL}}</p>
+    </div>
+  </div>
+  <p id="movie-text" *ngIf="topSongArtistS">So the movie we recommend for you is...</p>
+<div class="outer" *ngIf="topSongArtistS">
+  <div id="movieS" class="inner">
+    <img style="width: 250px; max-height: 100%;" src="{{moviePosterS}}">
+    <p class="movieP">{{movieNameS}}</p>
+  </div>
+  <div id="movieM" class="inner">
+    <img style="width: 250px; max-height: 100%;" src="{{moviePosterM}}">
+    <p class="movieP">{{movieNameM}}</p>
+  </div>
+  <div id="movieL" class="inner">
+    <img style="width: 250px; max-height: 100%;" src="{{moviePosterL}}">
+    <p class="movieP">{{movieNameL}}</p>
+  </div>
+  <p id="no-result" class="inner" *ngIf="isEmpty">We are sorry, but we couldn't figure out a movie for you. :( Try
+                                    again later, after you listened to more music!</p>
+</div>
+  <a href="#" class="btn btn-primary btn-lg" onclick="backToLogin(); return false;" *ngIf="topSongArtistS">Try again!</a>
+</div>
